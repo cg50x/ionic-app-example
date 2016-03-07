@@ -3,7 +3,8 @@
 
 angular.module('starter', [
 	'ionic',
-	'starter.states'
+	'starter.states',
+	'starter.modals'
 ]);
 
 })()

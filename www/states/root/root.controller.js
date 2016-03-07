@@ -5,7 +5,7 @@ angular
 	.module('starter.states.root')
 	.controller('RootCtrl', RootCtrl);
 
-function RootCtrl ($scope, $ionicModal, $timeout) {
+function RootCtrl ($scope, $timeout, LoginModal) {
 	// With the new view caching in Ionic, Controllers are only called
 	// when they are recreated or on app start, instead of every page change.
 	// To listen for when this page is active (for example, to refresh data),
@@ -17,7 +17,7 @@ function RootCtrl ($scope, $ionicModal, $timeout) {
 	$scope.loginData = {};
 
 	// Create the login modal that we will use later
-	$ionicModal.fromTemplateUrl('../templates/login.html', {
+	LoginModal.create({
 		scope: $scope
 	}).then(function(modal) {
 		$scope.modal = modal;
