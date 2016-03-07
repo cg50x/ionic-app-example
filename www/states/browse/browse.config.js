@@ -8,7 +8,7 @@ angular
 function config ($stateProvider) {
 	$stateProvider
 		.state('root.browse', {
-			url: '/browse',
+			url: 'browse',
 			views: {
 				'menuContent': {
 					templateUrl: 'states/browse/browse.html'

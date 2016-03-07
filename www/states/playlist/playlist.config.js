@@ -8,7 +8,7 @@ angular
 function config ($stateProvider) {
 	$stateProvider
 		.state('root.playlist', {
-			url: '/playlists/:playlistId',
+			url: 'playlists/:playlistId',
 			views: {
 				'menuContent': {
 					templateUrl: 'states/playlist/playlist.html',

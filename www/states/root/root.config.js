@@ -8,7 +8,7 @@ angular
 function config ($stateProvider) {
 	$stateProvider
 		.state('root', {
-			url: '/root',
+			url: '/',
 			abstract: true,
 			templateUrl: 'states/root/menu.html',
 			controller: 'RootCtrl'
