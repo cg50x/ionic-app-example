@@ -29,6 +29,11 @@ gulp.task('copy-to-www', function () {
     .pipe(gulp.dest('www'));
 });
 
+gulp.task('html', function () {
+  return gulp.src('./src/**/*.html')
+    .pipe(gulp.dest('www'));
+});
+
 gulp.task('babel', function () {
   return gulp.src(paths.js)
     .pipe(plumber())
@@ -50,6 +55,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', ['build-www'], function() {
+  gulp.watch('./src/**/*.html', ['html']);
   gulp.watch(paths.js, ['babel']);
   gulp.watch(paths.sass, ['sass']);
 });
