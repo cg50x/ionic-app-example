@@ -1,8 +1,11 @@
 (function () {
 'use strict';
 
-function PlaylistCtrl ($scope, $stateParams) {
-	// TODO impl
+class PlaylistCtrl {
+	constructor ($scope, $stateParams) {
+		this.$scope = $scope;
+		this.$stateParams = $stateParams;
+	}
 }
 
 angular
