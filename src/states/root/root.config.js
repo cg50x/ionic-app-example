@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.root')
-	.config(config);
-
 function config ($stateProvider) {
 	$stateProvider
 		.state('root', {
@@ -14,5 +10,9 @@ function config ($stateProvider) {
 			controller: 'RootCtrl'
 		});
 }
+
+angular
+	.module('starter.states.root')
+	.config(config);
 
 })();

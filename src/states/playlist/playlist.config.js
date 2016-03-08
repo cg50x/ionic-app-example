@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.playlist')
-	.config(config);
-
 function config ($stateProvider) {
 	$stateProvider
 		.state('root.playlist', {
@@ -17,5 +13,9 @@ function config ($stateProvider) {
 			}
 		});
 }
+
+angular
+	.module('starter.states.playlist')
+	.config(config);
 
 })();

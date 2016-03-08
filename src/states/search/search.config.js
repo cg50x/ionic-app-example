@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.search')
-	.config(config);
-
 function config ($stateProvider) {
 	$stateProvider
 		.state('root.search', {
@@ -16,5 +12,9 @@ function config ($stateProvider) {
 			}
 		});
 }
+
+angular
+	.module('starter.states.search')
+	.config(config);
 
 })();

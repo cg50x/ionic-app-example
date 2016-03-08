@@ -1,8 +1,6 @@
 (function () {
 'use strict';
 
-var hello = (haha) => haha.hello;
-
 angular.module('starter.states', [
 	'starter.states.browse',
 	'starter.states.playlist',

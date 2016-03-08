@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.root')
-	.run(run);
-
 function run ($ionicPlatform) {
 	$ionicPlatform.ready(function() {
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,5 +15,9 @@ function run ($ionicPlatform) {
 		}
 	});
 }
+
+angular
+	.module('starter.states.root')
+	.run(run);
 
 })();

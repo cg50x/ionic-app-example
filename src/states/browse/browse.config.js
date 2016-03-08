@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.browse')
-	.config(config);
-
 function config ($stateProvider) {
 	$stateProvider
 		.state('root.browse', {
@@ -16,5 +12,9 @@ function config ($stateProvider) {
 			}
 		});
 }
+
+angular
+	.module('starter.states.browse')
+	.config(config);
 
 })();

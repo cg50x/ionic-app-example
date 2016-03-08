@@ -1,10 +1,6 @@
 (function () {
 'use strict';
 
-angular
-	.module('starter.states.root')
-	.controller('RootCtrl', RootCtrl);
-
 function RootCtrl ($scope, $timeout, LoginModal) {
 	// With the new view caching in Ionic, Controllers are only called
 	// when they are recreated or on app start, instead of every page change.
@@ -45,5 +41,9 @@ function RootCtrl ($scope, $timeout, LoginModal) {
 		}, 1000);
 	};
 }
+
+angular
+	.module('starter.states.root')
+	.controller('RootCtrl', RootCtrl);
 
 })();
