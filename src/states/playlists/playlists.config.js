@@ -5,12 +5,8 @@ function config ($stateProvider) {
 	$stateProvider
 		.state('root.playlists', {
 			url: 'playlists',
-			views: {
-				'menuContent': {
-					templateUrl: 'states/playlists/playlists.html',
-					controller: 'PlaylistsCtrl'
-				}
-			}
+			templateUrl: 'states/playlists/playlists.html',
+			controller: 'PlaylistsCtrl'
 		});
 }
 

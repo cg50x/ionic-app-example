@@ -5,11 +5,7 @@ function config ($stateProvider) {
 	$stateProvider
 		.state('root.search', {
 			url: 'search',
-			views: {
-				'menuContent': {
-					templateUrl: 'states/search/search.html'
-				}
-			}
+			templateUrl: 'states/search/search.html'
 		});
 }
 

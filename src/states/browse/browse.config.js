@@ -5,11 +5,7 @@ function config ($stateProvider) {
 	$stateProvider
 		.state('root.browse', {
 			url: 'browse',
-			views: {
-				'menuContent': {
-					templateUrl: 'states/browse/browse.html'
-				}
-			}
+			templateUrl: 'states/browse/browse.html'
 		});
 }
 
