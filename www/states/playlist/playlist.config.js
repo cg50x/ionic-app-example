@@ -1,13 +1,12 @@
-(function () {
 'use strict';
 
-angular
-	.module('starter.states.playlist')
-	.config(config);
+(function () {
+	'use strict';
 
-function config ($stateProvider) {
-	$stateProvider
-		.state('root.playlist', {
+	angular.module('starter.states.playlist').config(config);
+
+	function config($stateProvider) {
+		$stateProvider.state('root.playlist', {
 			url: 'playlists/:playlistId',
 			views: {
 				'menuContent': {
@@ -16,6 +15,5 @@ function config ($stateProvider) {
 				}
 			}
 		});
-}
-
+	}
 })();

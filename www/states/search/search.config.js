@@ -1,13 +1,12 @@
-(function () {
 'use strict';
 
-angular
-	.module('starter.states.search')
-	.config(config);
+(function () {
+	'use strict';
 
-function config ($stateProvider) {
-	$stateProvider
-		.state('root.search', {
+	angular.module('starter.states.search').config(config);
+
+	function config($stateProvider) {
+		$stateProvider.state('root.search', {
 			url: 'search',
 			views: {
 				'menuContent': {
@@ -15,6 +14,5 @@ function config ($stateProvider) {
 				}
 			}
 		});
-}
-
+	}
 })();

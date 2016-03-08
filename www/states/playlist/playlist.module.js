@@ -1,6 +1,7 @@
-(function () {
 'use strict';
 
-angular.module('starter.states.playlist', []);
+(function () {
+  'use strict';
 
+  angular.module('starter.states.playlist', []);
 })();

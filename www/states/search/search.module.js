@@ -1,6 +1,7 @@
-(function () {
 'use strict';
 
-angular.module('starter.states.search', []);
+(function () {
+  'use strict';
 
+  angular.module('starter.states.search', []);
 })();

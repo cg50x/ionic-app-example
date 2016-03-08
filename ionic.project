@@ -2,11 +2,10 @@
   "name": "new-arch-prototype",
   "app_id": "",
   "gulpStartupTasks": [
-    "sass",
     "watch"
   ],
   "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
+    "src/**/*",
+    "!src/lib/**/*"
   ]
 }
