@@ -2,26 +2,87 @@
 'use strict';
 
 class RootCtrl {
-	constructor ($scope, $timeout, LoginModal) {
+	constructor ($scope, $timeout, $rootScope, LoginModal) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
+		this.$rootScope = $rootScope;
 		this.LoginModal = LoginModal;
 
-		// With the new view caching in Ionic, Controllers are only called
-		// when they are recreated or on app start, instead of every page change.
-		// To listen for when this page is active (for example, to refresh data),
-		// listen for the $ionicView.enter event:
-		//$scope.$on('$ionicView.enter', function(e) {
-		//});
-		
-		// Bind event handlers 'this' reference to this controller
-		this.onLoginModalFormSubmitted = this.onLoginModalFormSubmitted.bind(this);
-		this.onLoginModalCloseButtonClicked = this.onLoginModalCloseButtonClicked.bind(this);
-		
+		this.initializeStateChangeEventHandlers();
+		this.initializeViewEventHandlers();
 		this.initializeLoginModal();
 	}
 
+	initializeStateChangeEventHandlers () {
+		this.onStateChangeStart = this.onStateChangeStart.bind(this);
+		this.onStateNotFound = this.onStateNotFound.bind(this);
+		this.onStateChangeSuccess = this.onStateChangeSuccess.bind(this);
+		this.onStateChangeError = this.onStateChangeError.bind(this);
+
+		this.$rootScope.$on('$stateChangeStart', this.onStateChangeStart);
+		this.$rootScope.$on('$stateNotFound', this.onStateNotFound);
+		this.$rootScope.$on('$stateChangeSuccess', this.onStateChangeSuccess);
+		this.$rootScope.$on('$stateChangeError', this.onStateChangeError);
+	}
+
+	onStateChangeStart ($event, toState, toParams, fromState, fromParams, options) {
+		console.log('RootCtrl - onStateChangeStart');
+	}
+	onStateNotFound ($event, unfoundState, fromState, fromParams) {
+		console.log('RootCtrl - onStateNotFound');
+	}
+	onStateChangeSuccess ($event, toState, toParams, fromState, fromParams) {
+		console.log('RootCtrl - onStateChangeSuccess');
+	}
+	onStateChangeError ($event, toState, toParams, fromState, fromParams, error) {
+		console.log('RootCtrl - onStateChangeError');
+	}
+
+	initializeViewEventHandlers () {
+		this.onViewLoaded = this.onViewLoaded.bind(this);
+		this.onViewEnter = this.onViewEnter.bind(this);
+		this.onViewLeave = this.onViewLeave.bind(this);
+		this.onViewBeforeEnter = this.onViewBeforeEnter.bind(this);
+		this.onViewBeforeLeave = this.onViewBeforeLeave.bind(this);
+		this.onViewAfterEnter = this.onViewAfterEnter.bind(this);
+		this.onViewAfterLeave = this.onViewAfterLeave.bind(this);
+
+		this.$scope.$on('$ionicView.loaded', this.onViewLoaded);
+		this.$scope.$on('$ionicView.enter', this.onViewEnter);
+		this.$scope.$on('$ionicView.leave', this.onViewLeave);
+		this.$scope.$on('$ionicView.beforeEnter', this.onViewBeforeEnter);
+		this.$scope.$on('$ionicView.beforeLeave', this.onViewBeforeLeave);
+		this.$scope.$on('$ionicView.afterEnter', this.onViewAfterEnter);
+		this.$scope.$on('$ionicView.afterLeave', this.onViewAfterLeave);
+	}
+
+	onViewLoaded ($event) {
+		console.log('RootCtrl - onViewLoaded');
+	}
+	onViewEnter ($event) {
+		console.log('RootCtrl - onViewEnter');
+	}
+	onViewLeave ($event) {
+		console.log('RootCtrl - onViewLeave');
+	}
+	onViewBeforeEnter ($event) {
+		console.log('RootCtrl - onViewBeforeEnter');
+	}
+	onViewBeforeLeave ($event) {
+		console.log('RootCtrl - onViewBeforeLeave');
+	}
+	onViewAfterEnter ($event) {
+		console.log('RootCtrl - onViewAfterEnter');
+	}
+	onViewAfterLeave ($event) {
+		console.log('RootCtrl - onViewAfterLeave');
+	}
+
 	initializeLoginModal () {
+		// Bind event handlers 'this' reference to this controller
+		this.onLoginModalFormSubmitted = this.onLoginModalFormSubmitted.bind(this);
+		this.onLoginModalCloseButtonClicked = this.onLoginModalCloseButtonClicked.bind(this);
+
 		// Create the login modal that we will use later
 		return this.LoginModal.create({
 			onCloseButtonClicked: this.onLoginModalCloseButtonClicked,
