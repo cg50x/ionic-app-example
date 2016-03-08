@@ -7,7 +7,7 @@ function config ($stateProvider) {
 			url: '/',
 			abstract: true,
 			templateUrl: 'states/root/menu.html',
-			controller: 'RootCtrl'
+			controller: 'RootCtrl as RootCtrl'
 		});
 }
 
