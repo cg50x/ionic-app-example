@@ -6,7 +6,7 @@ function config ($stateProvider) {
 		.state('root.playlist', {
 			url: 'playlists/:playlistId',
 			templateUrl: 'states/playlist/playlist.html',
-			controller: 'PlaylistCtrl'
+			controller: 'PlaylistCtrl as PlaylistCtrl'
 		});
 }
 
