@@ -102,6 +102,20 @@ class RootCtrl {
 		this.loginModal.show();
 	}
 
+	onLoginMenuPrefillButtonClicked () {
+		// Prefill the login modal
+		this.loginModal.fillForm({
+			username: 'haha',
+			password: 'foo'
+		});
+		this.loginModal.show();
+	}
+
+	onLoginMenuEmptyButtonClicked () {
+		this.loginModal.clearForm();
+		this.loginModal.show();
+	}
+
 	onLoginModalCloseButtonClicked () {
 		this.loginModal.hide();
 	}

@@ -9,9 +9,24 @@ class LoginModal {
 
 	create (options) {
 		return this.$ionicModal.fromTemplateUrl('modals/login/login.html').then((modal) => {
-			this.initializeScope(modal.scope, options);
+			this.extendModal(modal, options);
 			return modal;
 		});
+	}
+
+	extendModal (modal, options) {
+		this.initializeScope(modal.scope, options);
+		this.initializeMethods(modal);
+	}
+
+	initializeMethods (modal) {
+		modal.clearForm = function () {
+			this.fillForm({});
+		};
+		modal.fillForm = function (params) {
+			this.scope.loginData.username = params.username || '';
+			this.scope.loginData.password = params.password || '';
+		};
 	}
 
 	initializeScope (scope, options) {
