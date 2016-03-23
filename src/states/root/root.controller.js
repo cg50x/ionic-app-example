@@ -46,6 +46,7 @@ class RootCtrl {
 		this.onViewBeforeLeave = this.onViewBeforeLeave.bind(this);
 		this.onViewAfterEnter = this.onViewAfterEnter.bind(this);
 		this.onViewAfterLeave = this.onViewAfterLeave.bind(this);
+		this.onViewUnloaded = this.onViewUnloaded.bind(this);
 
 		this.$scope.$on('$ionicView.loaded', this.onViewLoaded);
 		this.$scope.$on('$ionicView.enter', this.onViewEnter);
@@ -54,28 +55,32 @@ class RootCtrl {
 		this.$scope.$on('$ionicView.beforeLeave', this.onViewBeforeLeave);
 		this.$scope.$on('$ionicView.afterEnter', this.onViewAfterEnter);
 		this.$scope.$on('$ionicView.afterLeave', this.onViewAfterLeave);
+		this.$scope.$on('$ionicView.unloaded', this.onViewUnloaded);
 	}
 
-	onViewLoaded ($event) {
-		console.log('RootCtrl - onViewLoaded');
+	onViewLoaded ($event, state) {
+		console.log('RootCtrl - onViewLoaded', $event);
 	}
-	onViewEnter ($event) {
-		console.log('RootCtrl - onViewEnter');
+	onViewEnter ($event, state) {
+		console.log('RootCtrl - onViewEnter', $event);
 	}
-	onViewLeave ($event) {
-		console.log('RootCtrl - onViewLeave');
+	onViewLeave ($event, state) {
+		console.log('RootCtrl - onViewLeave', $event);
 	}
-	onViewBeforeEnter ($event) {
-		console.log('RootCtrl - onViewBeforeEnter');
+	onViewBeforeEnter ($event, state) {
+		console.log('RootCtrl - onViewBeforeEnter', $event);
 	}
-	onViewBeforeLeave ($event) {
-		console.log('RootCtrl - onViewBeforeLeave');
+	onViewBeforeLeave ($event, state) {
+		console.log('RootCtrl - onViewBeforeLeave', $event);
 	}
-	onViewAfterEnter ($event) {
-		console.log('RootCtrl - onViewAfterEnter');
+	onViewAfterEnter ($event, state) {
+		console.log('RootCtrl - onViewAfterEnter', $event);
 	}
-	onViewAfterLeave ($event) {
-		console.log('RootCtrl - onViewAfterLeave');
+	onViewAfterLeave ($event, state) {
+		console.log('RootCtrl - onViewAfterLeave', $event);
+	}
+	onViewUnloaded ($event, state) {
+		console.log('RootCtrl - onViewUnloaded');
 	}
 
 	initializeLoginModal () {
