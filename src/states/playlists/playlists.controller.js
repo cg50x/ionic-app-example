@@ -2,9 +2,10 @@
 'use strict';
 
 class PlaylistsCtrl {
-	constructor ($scope, $rootScope) {
+	constructor ($scope, $rootScope, $state) {
 		this.$scope = $scope;
 		this.$rootScope = $rootScope;
+		this.$state = $state;
 		
 		$scope.playlists = [
 			{ title: 'Reggae', id: 1 },
@@ -17,6 +18,8 @@ class PlaylistsCtrl {
 
 		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
+
+		this.initializeClickHandlers();
 	}
 
 	initializeStateChangeEventHandlers () {
@@ -87,6 +90,15 @@ class PlaylistsCtrl {
 	}
 	onViewUnloaded ($event, state) {
 		console.log('PlaylistsCtrl - onViewUnloaded');
+	}
+
+	initializeClickHandlers () {
+		this.onPlaylistItemClicked = this.onPlaylistItemClicked.bind(this);
+	}
+	onPlaylistItemClicked (playlistId) {
+		this.$state.go('root.playlist', {
+			playlistId: playlistId
+		});
 	}
 }
 
