@@ -2,24 +2,32 @@
 'use strict';
 
 class PlaylistsCtrl {
-	constructor ($scope, $rootScope, $state) {
+	constructor ($scope, $rootScope, $state, $q, PlaylistService) {
 		this.$scope = $scope;
 		this.$rootScope = $rootScope;
 		this.$state = $state;
-		
-		$scope.playlists = [
-			{ title: 'Reggae', id: 1 },
-			{ title: 'Chill', id: 2 },
-			{ title: 'Dubstep', id: 3 },
-			{ title: 'Indie', id: 4 },
-			{ title: 'Rap', id: 5 },
-			{ title: 'Cowbell', id: 6 }
-		];
+		this.$q = $q;
+		this.PlaylistService = PlaylistService;
 
 		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
 
 		this.initializeClickHandlers();
+	}
+
+	refreshPlaylistsVm () {
+		return this.getPlaylistsData().then((playlists) => {
+			this.renderPlaylistsVm(playlists);
+		});
+	}
+
+	getPlaylistsData () {
+		return this.PlaylistService.getPlaylists();
+	}
+
+	renderPlaylistsVm (playlists) {
+		this.vm = this.vm || {};
+		this.vm.playlists = playlists;
 	}
 
 	initializeStateChangeEventHandlers () {
@@ -72,6 +80,7 @@ class PlaylistsCtrl {
 	}
 	onViewEnter ($event, state) {
 		console.log('PlaylistsCtrl - onViewEnter');
+		this.refreshPlaylistsVm();
 	}
 	onViewLeave ($event, state) {
 		console.log('PlaylistsCtrl - onViewLeave');

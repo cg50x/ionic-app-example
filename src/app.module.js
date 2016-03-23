@@ -4,7 +4,8 @@
 angular.module('starter', [
 	'ionic',
 	'starter.states',
-	'starter.modals'
+	'starter.modals',
+	'starter.services'
 ]);
 
 })()
