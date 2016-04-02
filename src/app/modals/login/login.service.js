@@ -8,7 +8,7 @@ class LoginModal {
 	}
 
 	create (options) {
-		return this.$ionicModal.fromTemplateUrl('modals/login/login.html').then((modal) => {
+		return this.$ionicModal.fromTemplateUrl('app/modals/login/login.html').then((modal) => {
 			this.extendModal(modal, options);
 			return modal;
 		});

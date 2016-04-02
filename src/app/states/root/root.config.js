@@ -6,7 +6,7 @@ function config ($stateProvider) {
 		.state('root', {
 			url: '/',
 			abstract: true,
-			templateUrl: 'states/root/menu.html',
+			templateUrl: 'app/states/root/menu.html',
 			controller: 'RootCtrl as RootCtrl'
 		});
 }
