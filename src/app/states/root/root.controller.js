@@ -2,10 +2,11 @@
 'use strict';
 
 class RootCtrl {
-	constructor ($scope, $timeout, $rootScope, LoginModal, AuthService) {
+	constructor ($scope, $timeout, $rootScope, $ionicPopup, LoginModal, AuthService) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
 		this.$rootScope = $rootScope;
+		this.$ionicPopup = $ionicPopup;
 		this.LoginModal = LoginModal;
 		this.AuthService = AuthService;
 
@@ -126,12 +127,18 @@ class RootCtrl {
 
 		// Simulate a login delay. Remove this and replace with your login
 		// code if using a login system
-		this.AuthService.loginWithPassword(loginData.username, loginData.password).then(function () {
-			console.log('login success');
-		}).catch(function () {
-			console.log('login failed');
-		}).finally(() => {
-			this.loginModal.hide();
+		this.AuthService.loginWithPassword(loginData.username, loginData.password).then(() => {
+			return this.$ionicPopup.alert({
+				title: 'Login Success',
+				subTitle: 'Login succeeded!'
+			}).then(() => {
+				this.loginModal.hide();
+			});
+		}).catch(() => {
+			return this.$ionicPopup.alert({
+				title: 'Login Failed',
+				subTitle: 'Wrong username or password!'
+			});
 		});
 	}
 }
