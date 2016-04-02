@@ -11,11 +11,9 @@ var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 
 var paths = {
-  js: [
-    './src/**/*.js',
-    '!./src/lib/**/*.js'
-  ],
-  sass: ['./scss/**/*.scss'],
+  src: './src',
+  lib: './src/lib',
+  styles: './src/styles'
 };
 
 gulp.task('default', ['babel', 'sass']);
@@ -25,7 +23,10 @@ gulp.task('build-www', function (done) {
 });
 
 gulp.task('copy-to-www', function () {
-  return gulp.src('./src/**/*')
+  return gulp.src([
+    paths.src + '/**/*',
+    '!' + paths.src + '/**/*.scss',
+    '!' + paths.styles])
     .pipe(gulp.dest('www'));
 });
 
@@ -35,14 +36,16 @@ gulp.task('html', function () {
 });
 
 gulp.task('babel', function () {
-  return gulp.src(paths.js)
+  return gulp.src([
+    paths.src + '/**/*.js',
+    '!' + paths.lib + '/**/*'])
     .pipe(plumber())
     .pipe(babel({presets: ['es2015']}))
     .pipe(gulp.dest('www'));
 });
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  gulp.src(paths.styles + '/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
@@ -55,9 +58,9 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', ['build-www'], function() {
-  gulp.watch('./src/**/*.html', ['html']);
-  gulp.watch(paths.js, ['babel']);
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.src + '/**/*.html', ['html']);
+  gulp.watch(paths.src + '/**/*.js', ['babel']);
+  gulp.watch(paths.src + '/**/*.scss', ['sass']);
 });
 
 gulp.task('install', ['git-check'], function() {
