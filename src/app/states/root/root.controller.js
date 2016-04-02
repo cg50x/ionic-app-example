@@ -2,11 +2,12 @@
 'use strict';
 
 class RootCtrl {
-	constructor ($scope, $timeout, $rootScope, LoginModal) {
+	constructor ($scope, $timeout, $rootScope, LoginModal, AuthService) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
 		this.$rootScope = $rootScope;
 		this.LoginModal = LoginModal;
+		this.AuthService = AuthService;
 
 		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
@@ -121,13 +122,17 @@ class RootCtrl {
 	}
 
 	onLoginModalFormSubmitted (loginData) {
-		console.log('Doin login', loginData);
+		console.log('Doing login', loginData);
 
 		// Simulate a login delay. Remove this and replace with your login
 		// code if using a login system
-		this.$timeout(() => {
+		this.AuthService.loginWithPassword(loginData.username, loginData.password).then(function () {
+			console.log('login success');
+		}).catch(function () {
+			console.log('login failed');
+		}).finally(() => {
 			this.loginModal.hide();
-		}, 1000);
+		});
 	}
 }
 
