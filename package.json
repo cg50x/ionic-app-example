@@ -1,7 +1,7 @@
 {
-  "name": "new-arch-prototype",
+  "name": "ionic-app-example",
   "version": "1.1.1",
-  "description": "new-arch-prototype: An Ionic project",
+  "description": "ionic-app-example: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
