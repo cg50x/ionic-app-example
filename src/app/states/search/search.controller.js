@@ -2,37 +2,10 @@
 'use strict';
 
 class SearchCtrl {
-	constructor ($scope, $rootScope) {
+	constructor ($scope) {
 		this.$scope = $scope;
-		this.$rootScope = $rootScope;
 
-		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
-	}
-
-	initializeStateChangeEventHandlers () {
-		this.onStateChangeStart = this.onStateChangeStart.bind(this);
-		this.onStateNotFound = this.onStateNotFound.bind(this);
-		this.onStateChangeSuccess = this.onStateChangeSuccess.bind(this);
-		this.onStateChangeError = this.onStateChangeError.bind(this);
-
-		this.$rootScope.$on('$stateChangeStart', this.onStateChangeStart);
-		this.$rootScope.$on('$stateNotFound', this.onStateNotFound);
-		this.$rootScope.$on('$stateChangeSuccess', this.onStateChangeSuccess);
-		this.$rootScope.$on('$stateChangeError', this.onStateChangeError);
-	}
-
-	onStateChangeStart ($event, toState, toParams, fromState, fromParams, options) {
-		console.log('SearchCtrl - onStateChangeStart');
-	}
-	onStateNotFound ($event, unfoundState, fromState, fromParams) {
-		console.log('SearchCtrl - onStateNotFound');
-	}
-	onStateChangeSuccess ($event, toState, toParams, fromState, fromParams) {
-		console.log('SearchCtrl - onStateChangeSuccess');
-	}
-	onStateChangeError ($event, toState, toParams, fromState, fromParams, error) {
-		console.log('SearchCtrl - onStateChangeError');
 	}
 
 	initializeViewEventHandlers () {

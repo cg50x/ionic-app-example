@@ -2,14 +2,12 @@
 'use strict';
 
 class PlaylistsCtrl {
-	constructor ($scope, $rootScope, $state, $q, PlaylistService) {
+	constructor ($scope, $state, $q, PlaylistService) {
 		this.$scope = $scope;
-		this.$rootScope = $rootScope;
 		this.$state = $state;
 		this.$q = $q;
 		this.PlaylistService = PlaylistService;
 
-		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
 
 		this.initializeClickHandlers();
@@ -28,31 +26,6 @@ class PlaylistsCtrl {
 	renderPlaylistsVm (playlists) {
 		this.vm = this.vm || {};
 		this.vm.playlists = playlists;
-	}
-
-	initializeStateChangeEventHandlers () {
-		this.onStateChangeStart = this.onStateChangeStart.bind(this);
-		this.onStateNotFound = this.onStateNotFound.bind(this);
-		this.onStateChangeSuccess = this.onStateChangeSuccess.bind(this);
-		this.onStateChangeError = this.onStateChangeError.bind(this);
-
-		this.$rootScope.$on('$stateChangeStart', this.onStateChangeStart);
-		this.$rootScope.$on('$stateNotFound', this.onStateNotFound);
-		this.$rootScope.$on('$stateChangeSuccess', this.onStateChangeSuccess);
-		this.$rootScope.$on('$stateChangeError', this.onStateChangeError);
-	}
-
-	onStateChangeStart ($event, toState, toParams, fromState, fromParams, options) {
-		console.log('PlaylistsCtrl - onStateChangeStart');
-	}
-	onStateNotFound ($event, unfoundState, fromState, fromParams) {
-		console.log('PlaylistsCtrl - onStateNotFound');
-	}
-	onStateChangeSuccess ($event, toState, toParams, fromState, fromParams) {
-		console.log('PlaylistsCtrl - onStateChangeSuccess');
-	}
-	onStateChangeError ($event, toState, toParams, fromState, fromParams, error) {
-		console.log('PlaylistsCtrl - onStateChangeError');
 	}
 
 	initializeViewEventHandlers () {

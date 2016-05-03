@@ -2,42 +2,15 @@
 'use strict';
 
 class RootCtrl {
-	constructor ($scope, $timeout, $rootScope, $ionicPopup, LoginModal, AuthService) {
+	constructor ($scope, $timeout, $ionicPopup, LoginModal, AuthService) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
-		this.$rootScope = $rootScope;
 		this.$ionicPopup = $ionicPopup;
 		this.LoginModal = LoginModal;
 		this.AuthService = AuthService;
 
-		this.initializeStateChangeEventHandlers();
 		this.initializeViewEventHandlers();
 		this.initializeLoginModal();
-	}
-
-	initializeStateChangeEventHandlers () {
-		this.onStateChangeStart = this.onStateChangeStart.bind(this);
-		this.onStateNotFound = this.onStateNotFound.bind(this);
-		this.onStateChangeSuccess = this.onStateChangeSuccess.bind(this);
-		this.onStateChangeError = this.onStateChangeError.bind(this);
-
-		this.$rootScope.$on('$stateChangeStart', this.onStateChangeStart);
-		this.$rootScope.$on('$stateNotFound', this.onStateNotFound);
-		this.$rootScope.$on('$stateChangeSuccess', this.onStateChangeSuccess);
-		this.$rootScope.$on('$stateChangeError', this.onStateChangeError);
-	}
-
-	onStateChangeStart ($event, toState, toParams, fromState, fromParams, options) {
-		console.log('RootCtrl - onStateChangeStart');
-	}
-	onStateNotFound ($event, unfoundState, fromState, fromParams) {
-		console.log('RootCtrl - onStateNotFound');
-	}
-	onStateChangeSuccess ($event, toState, toParams, fromState, fromParams) {
-		console.log('RootCtrl - onStateChangeSuccess');
-	}
-	onStateChangeError ($event, toState, toParams, fromState, fromParams, error) {
-		console.log('RootCtrl - onStateChangeError');
 	}
 
 	initializeViewEventHandlers () {
